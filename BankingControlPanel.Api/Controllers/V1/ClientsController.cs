@@ -1,4 +1,5 @@
 ﻿using BankingControlPanel.Application.Features.AdminFeatures.Commands;
+using BankingControlPanel.Application.Features.AdminFeatures.Queries;
 using BankingControlPanel.Application.Features.UserFeatures.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +34,27 @@ namespace BankingControlPanel.Api.Controllers.V1
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> AddClient([FromBody] AddClientCommand command, CancellationToken cancellationToken)
         {
-            return Ok(await _mediator.Send(command));
+            return Ok(await _mediator.Send(command, cancellationToken));
+        }
+
+        /// <summary>
+        /// Clients query
+        /// </summary>
+        /// 
+        /// <response code="200">Clients are returned</response>
+        /// <response code="400">You did something wrong!</response>
+        /// <response code="500">We did something wrong.Please try it again.</response>
+        /// <param name="query"></param>
+        /// <param name="cancellationToken"></param>
+        /// 
+
+        [HttpGet]
+        [ProducesResponseType(typeof(AddClientCommandResult), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Clients([FromQuery] ClientsQuery query, CancellationToken cancellationToken)
+        {
+            return Ok(await _mediator.Send(query,cancellationToken));
         }
     }
 }

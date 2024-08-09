@@ -13,6 +13,10 @@ namespace BankingControlPanel.Infrastructure.Configurations
 
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.PersonalId);
+            builder.HasIndex(x => x.FirstName);
+            builder.HasIndex(x => x.LastName);
+
             builder.Property(x => x.FirstName).HasMaxLength(59);
             builder.Property(x => x.LastName).HasMaxLength(59);
             builder.Property(x => x.PersonalId).IsRequired().HasMaxLength(11);
