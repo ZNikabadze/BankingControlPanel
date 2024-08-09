@@ -5,23 +5,25 @@ using BankingControlPanel.Shared.Infrastructure;
 
 namespace BankingControlPanel.Application.Features.UserFeatures.Commands
 {
-    internal class RegisterUserCommandHandler(IUserRepository users) : ICommandHandler<RegisterUserCommand, RegisterUserCommandResult>
+    internal class RegisterUserCommandHandler(IUserRepository users, IUnitOfWork _unitOfWork) : ICommandHandler<RegisterUserCommand, RegisterUserCommandResult>
     {
         public async Task<RegisterUserCommandResult> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
         {
-            var user = await users.OfName(command.UserName, cancellationToken);
+            var user = await users.OfName(command.Username, cancellationToken);
 
             if (user != null)
                 throw new AppException(AppErrorCodes.UserAlreadyExists);
 
-            var gela = User.CreateUser(command.UserName, command.Role);
+            var userToCreate = User.Create(command.Username, BCrypt.Net.BCrypt.HashPassword(command.Password), command.Role);
 
-            await users.Store(gela, cancellationToken);
+            await users.Store(userToCreate, cancellationToken);
 
-            return new RegisterUserCommandResult(gela.Id);
+            await _unitOfWork.CommitAsync(cancellationToken);
+
+            return new RegisterUserCommandResult(userToCreate.Id);
         }
     }
 
-    public record RegisterUserCommand(string UserName, UserRole Role) : ICommand<RegisterUserCommandResult>;
-    public record RegisterUserCommandResult(int id);
+    public record RegisterUserCommand(string Username, string Password, UserRole Role) : ICommand<RegisterUserCommandResult>;
+    public record RegisterUserCommandResult(int Id);
 }

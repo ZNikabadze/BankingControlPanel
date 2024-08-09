@@ -4,6 +4,7 @@ using BankingControlPanel.Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingControlPanel.Infrastructure.Migrations
 {
     [DbContext(typeof(BankingControlPanelDbContext))]
-    partial class BankingControlPanelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240809180207_ChangeUserProperyName")]
+    partial class ChangeUserProperyName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -8,22 +8,24 @@ namespace BankingControlPanel.Domain.UserManagement
     {
         protected User() { }
 
-        protected User(string userName, UserRole userRole)
+        protected User(string username, string passwordHash, UserRole userRole)
         {
-            ValidateUser();
-
+            Username = username;
+            PasswordHash = passwordHash;
             Role = userRole;
-            UserName = userName;
+
+            ValidateUser();
 
             Raise(new UserCreatedEvent());
         }
 
-        public string UserName { get; private set; }
+        public string Username { get; private set; }
+        public string PasswordHash { get; private set; }
         public UserRole Role { get; private set; }
 
-        public static User CreateUser(string userName, UserRole userRole)
+        public static User Create(string username, string passwordHash, UserRole userRole)
         {
-            return new User(userName, userRole);
+            return new User(username, passwordHash, userRole);
         }
 
         private void ValidateUser()

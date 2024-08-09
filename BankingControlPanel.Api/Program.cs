@@ -3,7 +3,6 @@ using BankingControlPanel.Application;
 using BankingControlPanel.Infrastructure;
 using BankingControlPanel.Infrastructure.DataAccess;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -22,7 +21,7 @@ builder.Services.AddControllers(options =>
     options.Filters.Add<GlobalExceptionFilter>();
 });
 
-var key = Encoding.ASCII.GetBytes("YourSuperSecretKeyHere"); // Replace with a strong key
+var key = Encoding.ASCII.GetBytes("YourVeryVeryVerySuperSecretKey"); // Replace with a strong key
 
 builder.Services.AddAuthentication(x =>
 {

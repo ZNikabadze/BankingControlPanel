@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BankingControlPanel.Infrastructure.Repositories
 {
-    internal class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly BankingControlPanelDbContext _physicalPersonDbContext;
 
@@ -21,7 +21,7 @@ namespace BankingControlPanel.Infrastructure.Repositories
 
         public async Task<User?> OfName(string name, CancellationToken cancellationToken)
         {
-            return await _physicalPersonDbContext.Users.SingleOrDefaultAsync(x => x.UserName == name, cancellationToken);
+            return await _physicalPersonDbContext.Users.SingleOrDefaultAsync(x => x.Username == name, cancellationToken);
         }
 
         public async Task Store(User user, CancellationToken cancellationToken)

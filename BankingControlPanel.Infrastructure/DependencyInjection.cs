@@ -1,5 +1,6 @@
 ﻿using BankingControlPanel.Domain.UserManagement;
 using BankingControlPanel.Infrastructure.DataAccess;
+using BankingControlPanel.Shared.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,11 +20,8 @@ namespace BankingControlPanel.Infrastructure
             services.AddDbContext<BankingControlPanelDbContext>(options =>
                                     options.UseSqlServer(connectionString));
 
-            #endregion
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            #region Identity
-
-           
             #endregion
 
             return services;

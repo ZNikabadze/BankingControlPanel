@@ -13,9 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\AdminFeatures\Commands\" />
     <Folder Include="Features\AdminFeatures\Queries\" />
-    <Folder Include="Features\UserFeatures\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
   </ItemGroup>
 
 </Project>
