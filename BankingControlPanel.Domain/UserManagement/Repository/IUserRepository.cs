@@ -4,5 +4,6 @@
     {
         Task Store(User user, CancellationToken cancellationToken);
         Task<User?> OfId(int userId, CancellationToken cancellationToken);
+        Task<User?> OfName(string name, CancellationToken cancellationToken);
     }
 }

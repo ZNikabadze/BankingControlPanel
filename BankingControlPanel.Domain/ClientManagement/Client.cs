@@ -41,7 +41,7 @@ namespace BankingControlPanel.Domain.ClientManagement
         public string MobileNumber { get; private set; }
         public Sex Sex { get; private set; }
         public Address Address { get; private set; }
-        public ICollection<Account> Accounts { get; private set; }
+        public virtual ICollection<Account> Accounts { get; private set; }
 
         private void ValidateClient()
         {
