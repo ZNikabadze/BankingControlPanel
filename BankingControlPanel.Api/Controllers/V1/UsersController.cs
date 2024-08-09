@@ -1,4 +1,5 @@
 ﻿using BankingControlPanel.Application.Features.UserFeatures.Commands;
+using BankingControlPanel.Application.Features.UserFeatures.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,7 +34,28 @@ namespace BankingControlPanel.Api.Controllers.V1
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Registration([FromBody] RegisterUserCommand command, CancellationToken cancellationToken)
         {
-            return Ok(await _mediator.Send(command));
+            return Ok(await _mediator.Send(command, cancellationToken));
+        }
+
+        /// <summary>
+        /// User registration
+        /// </summary>
+        /// 
+        /// <response code="200">Token returned</response>
+        /// <response code="400">You did something wrong!</response>
+        /// <response code="500">We did something wrong.Please try it again.</response>
+        /// <param name="query"></param>
+        /// <param name="cancellationToken"></param>
+        /// 
+
+        [HttpPost]
+        [Route("log-in")]
+        [ProducesResponseType(typeof(RegisterUserCommandResult), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Registration([FromBody] LogInQuery query, CancellationToken cancellationToken)
+        {
+            return Ok(await _mediator.Send(query, cancellationToken));
         }
     }
 }

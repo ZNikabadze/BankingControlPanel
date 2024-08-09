@@ -6,6 +6,18 @@ namespace BankingControlPanel.Domain.ClientManagement
     {
         protected Account() { }
 
+        protected Account(string username)
+        {
+            Username = username;
+        }
+
+        public string Username { get; private set; }
+
+        public static Account Create(string username)
+        {
+            return new Account(username);
+        }
+
         public int ClientId { get; set; }
         public virtual Client Client { get; set; }
     }

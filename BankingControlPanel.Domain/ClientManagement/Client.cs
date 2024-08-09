@@ -18,10 +18,8 @@ namespace BankingControlPanel.Domain.ClientManagement
             string mobileNumber,
             Sex sex,
             Address address,
-            ICollection<Account> accounts)
+            Account account)
         {
-            ValidateClient();
-
             Email = email;
             FirstName = firstName;
             LastName = lastName;
@@ -30,7 +28,9 @@ namespace BankingControlPanel.Domain.ClientManagement
             MobileNumber = mobileNumber;
             Sex = sex;
             Address = address;
-            Accounts = accounts;
+            Accounts.Add(account);
+
+            ValidateClient();
         }
 
         public string Email { get; private set; }
@@ -41,7 +41,20 @@ namespace BankingControlPanel.Domain.ClientManagement
         public string MobileNumber { get; private set; }
         public Sex Sex { get; private set; }
         public Address Address { get; private set; }
-        public virtual ICollection<Account> Accounts { get; private set; }
+        public virtual ICollection<Account> Accounts { get; private set; } = new HashSet<Account>();
+
+        public static Client Create(string email,
+            string firstName,
+            string lastName,
+            string personalId,
+            string profilePhoto,
+            string mobileNumber,
+            Sex sex,
+            Address address,
+            Account account)
+        {
+            return new Client(email, firstName, lastName, personalId, profilePhoto, mobileNumber, sex, address, account);
+        }
 
         private void ValidateClient()
         {

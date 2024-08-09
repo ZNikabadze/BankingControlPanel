@@ -3,6 +3,13 @@
     public enum AppErrorCodes: byte
     {
         None = 0,
-        UserAlreadyExists
+        UserAlreadyExists,
+        UserDoesNotExist,
+        InvalidCredentials,
+        InvalidGender,
+        InvalidFirstName,
+        InvalidLastName,
+        InvalidPersonalId,
+        ClientAlreadyExist
     }
 }
