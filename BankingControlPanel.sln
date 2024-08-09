@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Domain"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Infrastructure", "BankingControlPanel.Infrastructure\BankingControlPanel.Infrastructure.csproj", "{A50E38ED-9076-4F35-ADE8-9DA99C98947F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Shared", "BankingControlPanel.Shared\BankingControlPanel.Shared.csproj", "{B0FB8AE9-348E-49B2-B540-3C0FC2AF5A3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A50E38ED-9076-4F35-ADE8-9DA99C98947F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A50E38ED-9076-4F35-ADE8-9DA99C98947F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A50E38ED-9076-4F35-ADE8-9DA99C98947F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FB8AE9-348E-49B2-B540-3C0FC2AF5A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FB8AE9-348E-49B2-B540-3C0FC2AF5A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FB8AE9-348E-49B2-B540-3C0FC2AF5A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FB8AE9-348E-49B2-B540-3C0FC2AF5A3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

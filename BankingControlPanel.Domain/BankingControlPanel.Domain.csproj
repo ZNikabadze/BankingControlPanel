@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BankingControlPanel.Shared\BankingControlPanel.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientManagement\Events\" />
+    <Folder Include="ClientManagement\Respository\" />
+  </ItemGroup>
+
 </Project>
