@@ -1,11 +1,8 @@
-﻿using BankingControlPanel.Domain.UserManagement;
-using BankingControlPanel.Infrastructure.DataAccess;
+﻿using BankingControlPanel.Infrastructure.DataAccess;
 using BankingControlPanel.Shared.Infrastructure;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Text;
 
 namespace BankingControlPanel.Infrastructure
 {
