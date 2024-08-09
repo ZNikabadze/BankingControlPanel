@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BankingControlPanel.Domain\BankingControlPanel.Domain.csproj" />
+    <ProjectReference Include="..\BankingControlPanel.Infrastructure\BankingControlPanel.Infrastructure.csproj" />
+    <ProjectReference Include="..\BankingControlPanel.Shared\BankingControlPanel.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\AdminFeatures\Commands\" />
+    <Folder Include="Features\AdminFeatures\Queries\" />
+    <Folder Include="Features\UserFeatures\Queries\" />
+  </ItemGroup>
+
 </Project>
