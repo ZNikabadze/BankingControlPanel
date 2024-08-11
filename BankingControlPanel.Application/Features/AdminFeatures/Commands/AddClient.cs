@@ -15,7 +15,7 @@ namespace BankingControlPanel.Application.Features.AdminFeatures.Commands
             var client = await clients.OfEmail(command.Email, cancellationToken);
 
             if (client != null)
-                throw new AppException(AppErrorCodes.ClientAlreadyExist);
+                throw new AppException(AppErrorCodes.ClientAlreadyExists);
 
             var clientToCreate = Client.Create(command.Email,
                                                command.FirstName,
@@ -53,8 +53,8 @@ namespace BankingControlPanel.Application.Features.AdminFeatures.Commands
         public AddClientCommandValidator()
         {
             RuleFor(x => x.Email).Matches(x => Validations.EmailRegex).WithErrorCode(AppErrorCodes.InvalidEmail.ToString());
-            RuleFor(x => x.FirstName).NotEmpty().MinimumLength(2).MaximumLength(50).Matches(Validations.NamesRegex).WithErrorCode(AppErrorCodes.InvalidFirstName.ToString());
-            RuleFor(x => x.LastName).NotEmpty().MinimumLength(2).MaximumLength(50).Matches(Validations.NamesRegex).WithErrorCode(AppErrorCodes.InvalidLastName.ToString());
+            RuleFor(x => x.FirstName).NotEmpty().MinimumLength(2).MaximumLength(59).Matches(Validations.NamesRegex).WithErrorCode(AppErrorCodes.InvalidFirstName.ToString());
+            RuleFor(x => x.LastName).NotEmpty().MinimumLength(2).MaximumLength(59).Matches(Validations.NamesRegex).WithErrorCode(AppErrorCodes.InvalidLastName.ToString());
             RuleFor(x => x.Sex).NotEqual(Sex.None).WithErrorCode(AppErrorCodes.InvalidGender.ToString());
             RuleFor(x => x.PersonalId).NotEmpty().Length(11).Matches(Validations.DigitsRegex).WithErrorCode(AppErrorCodes.InvalidPersonalId.ToString());
             RuleFor(x => x.MobileNumber).NotEmpty().Must(Validations.IsValidMobileNumber).WithErrorCode(AppErrorCodes.InvalidMobileNumber.ToString());
