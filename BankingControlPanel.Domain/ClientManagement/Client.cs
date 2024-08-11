@@ -1,6 +1,6 @@
-﻿using BankingControlPanel.Domain.ClientManagement.Validations;
-using BankingControlPanel.Domain.ClientManagement.ValueObjects;
+﻿using BankingControlPanel.Domain.ClientManagement.ValueObjects;
 using BankingControlPanel.Domain.Exceptions;
+using BankingControlPanel.Shared.Helpers;
 using BankingControlPanel.Shared.Infrastructure.Models;
 using System.Text.RegularExpressions;
 
@@ -41,40 +41,43 @@ namespace BankingControlPanel.Domain.ClientManagement
         public string MobileNumber { get; private set; }
         public Sex Sex { get; private set; }
         public Address Address { get; private set; }
-        public virtual ICollection<Account> Accounts { get; private set; } = new HashSet<Account>();
+        public virtual ICollection<Account> Accounts { get; private set; } = new List<Account>();
 
         public static Client Create(string email,
             string firstName,
             string lastName,
             string personalId,
-            string profilePhoto,
+            string profilePhotoUrl,
             string mobileNumber,
             Sex sex,
             Address address,
             Account account)
         {
-            return new Client(email, firstName, lastName, personalId, profilePhoto, mobileNumber, sex, address, account);
+            return new Client(email, firstName, lastName, personalId, profilePhotoUrl, mobileNumber, sex, address, account);
         }
 
         private void ValidateClient()
         {
-            if (string.IsNullOrEmpty(Email) || !Regex.IsMatch(Email, RegexConstants.EmailRegex, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)))
+            if (string.IsNullOrEmpty(Email) || !Regex.IsMatch(Email, Validations.EmailRegex, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)))
                 throw new DomainException(DomainErrorCodes.InvalidEmail);
 
-            if (string.IsNullOrEmpty(FirstName) || FirstName.Length >= 60 || !Regex.Matches(FirstName, RegexConstants.NamesRegex, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)).Any(x => x.Success))
+            if (string.IsNullOrEmpty(FirstName) || FirstName.Length >= 60 || !Regex.Matches(FirstName, Validations.NamesRegex, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)).Any(x => x.Success))
                 throw new DomainException(DomainErrorCodes.InvalidFirstName);
 
-            if (string.IsNullOrEmpty(LastName) || LastName.Length >= 60 || !Regex.Matches(LastName, RegexConstants.NamesRegex, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)).Any(x => x.Success))
+            if (string.IsNullOrEmpty(LastName) || LastName.Length >= 60 || !Regex.Matches(LastName, Validations.NamesRegex, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)).Any(x => x.Success))
                 throw new DomainException(DomainErrorCodes.InvalidLastName);
 
             if (Sex == Sex.None)
                 throw new DomainException(DomainErrorCodes.InvalidGender);
 
-            if (string.IsNullOrEmpty(PersonalId) || PersonalId.Length != 11 || !Regex.Matches(PersonalId, RegexConstants.DigitsRegex, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)).Any(x => x.Success))
+            if (string.IsNullOrEmpty(PersonalId) || PersonalId.Length != 11 || !Regex.Matches(PersonalId, Validations.DigitsRegex, RegexOptions.IgnoreCase, TimeSpan.FromSeconds(2)).Any(x => x.Success))
                 throw new DomainException(DomainErrorCodes.InvalidPersonId);
 
             if (Accounts.Count() < 1)
                 throw new DomainException(DomainErrorCodes.InvalidAccountCount);
+
+            if (!Validations.IsValidMobileNumber(MobileNumber))
+                throw new DomainException(DomainErrorCodes.InvalidMobileNumber);
         }
     }
 }

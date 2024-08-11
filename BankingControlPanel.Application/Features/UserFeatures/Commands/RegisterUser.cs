@@ -2,6 +2,7 @@
 using BankingControlPanel.Domain.UserManagement;
 using BankingControlPanel.Domain.UserManagement.Repository;
 using BankingControlPanel.Shared.Infrastructure;
+using FluentValidation;
 
 namespace BankingControlPanel.Application.Features.UserFeatures.Commands
 {
@@ -26,4 +27,11 @@ namespace BankingControlPanel.Application.Features.UserFeatures.Commands
 
     public record RegisterUserCommand(string Username, string Password, UserRole Role) : ICommand<RegisterUserCommandResult>;
     public record RegisterUserCommandResult(int Id);
+    public class RegisterUserCommandValidator : AbstractValidator<RegisterUserCommand>
+    {
+        public RegisterUserCommandValidator()
+        {
+            RuleFor(x => x.Role).NotEqual(UserRole.None).WithErrorCode(AppErrorCodes.InvalidRole.ToString());
+        }
+    }
 }

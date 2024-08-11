@@ -5,6 +5,7 @@ using BankingControlPanel.Domain.ClientManagement.Respository;
 using BankingControlPanel.Domain.UserManagement.Repository;
 using BankingControlPanel.Infrastructure.Repositories;
 using BankingControlPanel.Shared.Infrastructure.Behaviors;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -22,6 +23,8 @@ namespace BankingControlPanel.Application
                 config.AddOpenBehavior(typeof(ValidationBehavior<,>));
                 config.AddOpenBehavior(typeof(LoggingBehavior<,>));
             });
+
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IUserRepository, UserRepository>();

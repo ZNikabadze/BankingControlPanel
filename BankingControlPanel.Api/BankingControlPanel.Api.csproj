@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BankingControlPanel.Application\BankingControlPanel.Application.csproj" />
     <ProjectReference Include="..\BankingControlPanel.Infrastructure\BankingControlPanel.Infrastructure.csproj" />
+    <ProjectReference Include="..\BankingControlPanel.Shared\BankingControlPanel.Shared.csproj" />
   </ItemGroup>
 
 </Project>

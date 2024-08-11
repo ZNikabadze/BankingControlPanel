@@ -44,11 +44,11 @@ namespace BankingControlPanel.Application.Features.AdminFeatures.Queries
             if (!string.IsNullOrEmpty(query.PersonalId))
                 clients = clients.Where(x => x.PersonalId.Contains(query.PersonalId));
 
-            var peopleToReturn = await clients.Skip((query.PageNumber ?? 0) * (query.PageSize ?? 10)) // For high performance here we could use cursor pagination
-                                              .Take(query.PageSize ?? 10)
-                                              .AsNoTracking()
-                                              .OrderBy(query.OrderBy ?? "CreatedAt", "asc")
-                                              .ToListAsync(cancellationToken);
+            var peopleToReturn =   clients.Skip((query.PageNumber ?? 0) * (query.PageSize ?? 10)) // For high performance here we could use cursor pagination
+                                          .Take(query.PageSize ?? 10)
+                                          .AsNoTracking()
+                                          .OrderBy(query.OrderBy ?? "CreatedAt", "asc")
+                                          .AsQueryable();
 
             _cacheService.CacheParameters(_context.Username, JsonSerializer.Serialize(query));
 

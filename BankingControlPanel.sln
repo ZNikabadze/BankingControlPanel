@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Infrast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingControlPanel.Shared", "BankingControlPanel.Shared\BankingControlPanel.Shared.csproj", "{B0FB8AE9-348E-49B2-B540-3C0FC2AF5A3A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{FCD76F7C-DD31-4D5A-A2C7-2332E141A4A6}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\zniqa\OneDrive\Desktop\Banking Control Panel.postman_collection.json = C:\Users\zniqa\OneDrive\Desktop\Banking Control Panel.postman_collection.json
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
