@@ -5,11 +5,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankingControlPanel.Api.Controllers.V1
 {
+
+    /// <summary>
+    /// User specific controller
+    /// </summary>
+    /// 
+
     [Route("api/v1/users")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
+
+
+        /// <summary>
+        /// User specific controller
+        /// </summary>
+        /// 
 
         public UsersController(IMediator mediator)
         {
@@ -28,7 +40,7 @@ namespace BankingControlPanel.Api.Controllers.V1
         /// 
 
         [HttpPost]
-        [Route("registration")]
+        [Route("register")]
         [ProducesResponseType(typeof(RegisterUserCommandResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
@@ -38,7 +50,7 @@ namespace BankingControlPanel.Api.Controllers.V1
         }
 
         /// <summary>
-        /// User registration
+        /// Log in
         /// </summary>
         /// 
         /// <response code="200">Token returned</response>
@@ -53,7 +65,7 @@ namespace BankingControlPanel.Api.Controllers.V1
         [ProducesResponseType(typeof(RegisterUserCommandResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Registration([FromBody] LogInQuery query, CancellationToken cancellationToken)
+        public async Task<IActionResult> LogIn([FromBody] LogInQuery query, CancellationToken cancellationToken)
         {
             return Ok(await _mediator.Send(query, cancellationToken));
         }
