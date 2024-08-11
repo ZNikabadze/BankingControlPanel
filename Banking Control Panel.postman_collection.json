@@ -1,0 +1,1187 @@
+{
+	"info": {
+		"_postman_id": "e9cd274f-2e14-4bd4-8cdb-93d45d3e2ad3",
+		"name": "Banking Control Panel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12274838"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "clients",
+							"item": [
+								{
+									"name": "search-suggestions",
+									"item": [
+										{
+											"name": "Search suggestions query",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3QtdXNlciIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTcyMzM5NTIzNiwiZXhwIjoxNzIzMzk4ODM2LCJpYXQiOjE3MjMzOTUyMzZ9.t6g4pFI0UnvkX_4PD38FYKn8yiER8M0hNGROP6hAaEs",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/clients/search-suggestions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"clients",
+														"search-suggestions"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Suggestions are returned",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/clients/search-suggestions",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"clients",
+																"search-suggestions"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"suggestions\": [\n    {\n      \"email\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"mobileNumber\": \"<string>\",\n      \"sex\": 2,\n      \"address\": \"<string>\",\n      \"personalId\": \"<string>\",\n      \"pageNumber\": \"<integer>\",\n      \"pageSize\": \"<integer>\",\n      \"orderBy\": \"<string>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"mobileNumber\": \"<string>\",\n      \"sex\": 1,\n      \"address\": \"<string>\",\n      \"personalId\": \"<string>\",\n      \"pageNumber\": \"<integer>\",\n      \"pageSize\": \"<integer>\",\n      \"orderBy\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"name": "You did something wrong!",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/clients/search-suggestions",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"clients",
+																"search-suggestions"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "We did something wrong.Please try it again.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/clients/search-suggestions",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"clients",
+																"search-suggestions"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Client Creation",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3QtdXNlciIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTcyMzM5NTIzNiwiZXhwIjoxNzIzMzk4ODM2LCJpYXQiOjE3MjMzOTUyMzZ9.t6g4pFI0UnvkX_4PD38FYKn8yiER8M0hNGROP6hAaEs",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"test-user@gmail.com\",\n  \"firstName\": \"testName\",\n  \"lastName\": \"testLastName\",\n  \"personalId\": \"12345678912\",\n  \"profilePhoto\": \"tset-photo\",\n  \"mobileNumber\": \"995591111111\",\n  \"sex\": 1,\n  \"address\": {\n    \"country\": \"Georgia\",\n    \"city\": \"Tbilisi\",\n    \"street\": \"Chavchavadze\",\n    \"zipCode\": \"0186\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/clients",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"clients"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Client has been added",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"personalId\": \"<string>\",\n  \"profilePhoto\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"sex\": 0,\n  \"address\": {\n    \"country\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"zipCode\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/clients",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"clients"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<integer>\"\n}"
+										},
+										{
+											"name": "You did something wrong!",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"personalId\": \"<string>\",\n  \"profilePhoto\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"sex\": 0,\n  \"address\": {\n    \"country\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"zipCode\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/clients",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"clients"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "We did something wrong.Please try it again.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"personalId\": \"<string>\",\n  \"profilePhoto\": \"<string>\",\n  \"mobileNumber\": \"<string>\",\n  \"sex\": 0,\n  \"address\": {\n    \"country\": \"<string>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"zipCode\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/clients",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"clients"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Clients query",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3QtdXNlciIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTcyMzM5NTIzNiwiZXhwIjoxNzIzMzk4ODM2LCJpYXQiOjE3MjMzOTUyMzZ9.t6g4pFI0UnvkX_4PD38FYKn8yiER8M0hNGROP6hAaEs",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlc3QtdXNlciIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTcyMzM5NTIzNiwiZXhwIjoxNzIzMzk4ODM2LCJpYXQiOjE3MjMzOTUyMzZ9.t6g4pFI0UnvkX_4PD38FYKn8yiER8M0hNGROP6hAaEs",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/clients?Email=&FirstName=&LastName=&MobileNumber=&Sex=&Address=&PersonalId=&PageNumber=&PageSize=&OrderBy=",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"clients"
+											],
+											"query": [
+												{
+													"key": "Email",
+													"value": ""
+												},
+												{
+													"key": "FirstName",
+													"value": ""
+												},
+												{
+													"key": "LastName",
+													"value": ""
+												},
+												{
+													"key": "MobileNumber",
+													"value": ""
+												},
+												{
+													"key": "Sex",
+													"value": ""
+												},
+												{
+													"key": "Address",
+													"value": ""
+												},
+												{
+													"key": "PersonalId",
+													"value": ""
+												},
+												{
+													"key": "PageNumber",
+													"value": ""
+												},
+												{
+													"key": "PageSize",
+													"value": ""
+												},
+												{
+													"key": "OrderBy",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Clients are returned",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/clients?Email=<string>&FirstName=<string>&LastName=<string>&MobileNumber=<string>&Sex=2&Address=<string>&PersonalId=<string>&PageNumber=<integer>&PageSize=<integer>&OrderBy=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"clients"
+													],
+													"query": [
+														{
+															"key": "Email",
+															"value": "<string>"
+														},
+														{
+															"key": "FirstName",
+															"value": "<string>"
+														},
+														{
+															"key": "LastName",
+															"value": "<string>"
+														},
+														{
+															"key": "MobileNumber",
+															"value": "<string>"
+														},
+														{
+															"key": "Sex",
+															"value": "2"
+														},
+														{
+															"key": "Address",
+															"value": "<string>"
+														},
+														{
+															"key": "PersonalId",
+															"value": "<string>"
+														},
+														{
+															"key": "PageNumber",
+															"value": "<integer>"
+														},
+														{
+															"key": "PageSize",
+															"value": "<integer>"
+														},
+														{
+															"key": "OrderBy",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"clients\": [\n    {\n      \"email\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"personalId\": \"<string>\",\n      \"profilePhoto\": \"<string>\",\n      \"mobileNumber\": \"<string>\",\n      \"sex\": 1,\n      \"address\": {\n        \"country\": \"<string>\",\n        \"city\": \"<string>\",\n        \"street\": \"<string>\",\n        \"zipCode\": \"<string>\"\n      },\n      \"accounts\": [\n        {\n          \"username\": \"<string>\"\n        },\n        {\n          \"username\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"email\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"personalId\": \"<string>\",\n      \"profilePhoto\": \"<string>\",\n      \"mobileNumber\": \"<string>\",\n      \"sex\": 0,\n      \"address\": {\n        \"country\": \"<string>\",\n        \"city\": \"<string>\",\n        \"street\": \"<string>\",\n        \"zipCode\": \"<string>\"\n      },\n      \"accounts\": [\n        {\n          \"username\": \"<string>\"\n        },\n        {\n          \"username\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}"
+										},
+										{
+											"name": "You did something wrong!",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/clients?Email=<string>&FirstName=<string>&LastName=<string>&MobileNumber=<string>&Sex=2&Address=<string>&PersonalId=<string>&PageNumber=<integer>&PageSize=<integer>&OrderBy=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"clients"
+													],
+													"query": [
+														{
+															"key": "Email",
+															"value": "<string>"
+														},
+														{
+															"key": "FirstName",
+															"value": "<string>"
+														},
+														{
+															"key": "LastName",
+															"value": "<string>"
+														},
+														{
+															"key": "MobileNumber",
+															"value": "<string>"
+														},
+														{
+															"key": "Sex",
+															"value": "2"
+														},
+														{
+															"key": "Address",
+															"value": "<string>"
+														},
+														{
+															"key": "PersonalId",
+															"value": "<string>"
+														},
+														{
+															"key": "PageNumber",
+															"value": "<integer>"
+														},
+														{
+															"key": "PageSize",
+															"value": "<integer>"
+														},
+														{
+															"key": "OrderBy",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "We did something wrong.Please try it again.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/clients?Email=<string>&FirstName=<string>&LastName=<string>&MobileNumber=<string>&Sex=2&Address=<string>&PersonalId=<string>&PageNumber=<integer>&PageSize=<integer>&OrderBy=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"clients"
+													],
+													"query": [
+														{
+															"key": "Email",
+															"value": "<string>"
+														},
+														{
+															"key": "FirstName",
+															"value": "<string>"
+														},
+														{
+															"key": "LastName",
+															"value": "<string>"
+														},
+														{
+															"key": "MobileNumber",
+															"value": "<string>"
+														},
+														{
+															"key": "Sex",
+															"value": "2"
+														},
+														{
+															"key": "Address",
+															"value": "<string>"
+														},
+														{
+															"key": "PersonalId",
+															"value": "<string>"
+														},
+														{
+															"key": "PageNumber",
+															"value": "<integer>"
+														},
+														{
+															"key": "PageSize",
+															"value": "<integer>"
+														},
+														{
+															"key": "OrderBy",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "users",
+							"item": [
+								{
+									"name": "register",
+									"item": [
+										{
+											"name": "User registration",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"username\": \"test-user\",\n  \"password\": \"test-user-password\",\n  \"role\": 1\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/register",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														"register"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "User has been registered",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": 1\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/users/register",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"users",
+																"register"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<integer>\"\n}"
+												},
+												{
+													"name": "You did something wrong!",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": 1\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/users/register",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"users",
+																"register"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "We did something wrong.Please try it again.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": 1\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/users/register",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"users",
+																"register"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "log-in",
+									"item": [
+										{
+											"name": "Log in",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"username\": \"test-user\",\n  \"password\": \"test-user-password\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/log-in",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														"log-in"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Token returned",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/users/log-in",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"users",
+																"log-in"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"id\": \"<integer>\"\n}"
+												},
+												{
+													"name": "You did something wrong!",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/users/log-in",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"users",
+																"log-in"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												},
+												{
+													"name": "We did something wrong.Please try it again.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/users/log-in",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"users",
+																"log-in"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:44372"
+		}
+	]
+}
