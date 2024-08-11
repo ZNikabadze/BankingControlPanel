@@ -34,7 +34,7 @@ namespace BankingControlPanel.Api.Controllers.V1
         /// 
         /// <response code="200">User has been registered</response>
         /// <response code="400">You did something wrong!</response>
-        /// <response code="500">We did something wrong.Please try it again.</response>
+        /// <response code="500">We did something wrong. Please try it again.</response>
         /// <param name="command"></param>
         /// <param name="cancellationToken"></param>
         /// 
@@ -53,7 +53,7 @@ namespace BankingControlPanel.Api.Controllers.V1
         /// Log in
         /// </summary>
         /// 
-        /// <response code="200">Token returned</response>
+        /// <response code="200">Token is returned</response>
         /// <response code="400">You did something wrong!</response>
         /// <response code="500">We did something wrong.Please try it again.</response>
         /// <param name="query"></param>
@@ -62,7 +62,7 @@ namespace BankingControlPanel.Api.Controllers.V1
 
         [HttpPost]
         [Route("log-in")]
-        [ProducesResponseType(typeof(RegisterUserCommandResult), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(LogInQueryResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> LogIn([FromBody] LogInQuery query, CancellationToken cancellationToken)

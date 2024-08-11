@@ -13,6 +13,6 @@
         InvalidLastName,
         InvalidPersonalId,
         InvalidMobileNumber,
-        ClientAlreadyExist
+        ClientAlreadyExists
     }
 }

@@ -19,7 +19,6 @@ namespace BankingControlPanel.Application.Authentication
                 };
             };
 
-            var clientIpAddress = httpContext.Connection.RemoteIpAddress.ToString();
             var username = httpContext.User.FindFirst(ClaimTypes.Name);
             var role = httpContext.User.FindFirst(ClaimTypes.Role);
 
