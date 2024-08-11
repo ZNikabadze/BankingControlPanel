@@ -1,4 +1,7 @@
-﻿using BankingControlPanel.Domain.ClientManagement.Respository;
+﻿using BankingControlPanel.Application.Authentication;
+using BankingControlPanel.Application.Shared.Cache.Abstraction;
+using BankingControlPanel.Application.Shared.Cache.Concrete;
+using BankingControlPanel.Domain.ClientManagement.Respository;
 using BankingControlPanel.Domain.UserManagement.Repository;
 using BankingControlPanel.Infrastructure.Repositories;
 using BankingControlPanel.Shared.Infrastructure.Behaviors;
@@ -11,6 +14,8 @@ namespace BankingControlPanel.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            services.AddMemoryCache();
+
             services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
@@ -20,6 +25,8 @@ namespace BankingControlPanel.Application
 
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ISearchSuggestionCacheService, SearchSuggestionCacheService>();
+            services.AddScoped<ApplicationContext, ApplicationContext>(ctx => ApplicationContextFactory.Create(ctx));
 
             return services;
         } 

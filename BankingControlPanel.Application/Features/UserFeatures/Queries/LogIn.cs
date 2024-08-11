@@ -10,7 +10,7 @@ namespace BankingControlPanel.Application.Features.UserFeatures.Queries
 {
     internal class LogInQueryHandler(IUserRepository users) : IQueryHandler<LogInQuery, LogInQueryResult>
     {
-        private readonly string _jwtSecretKey = "YourVeryVeryVerySuperSecretKey"; // Replace with a strong key
+        private readonly string _jwtSecretKey = "YourVeryVeryVeryVerySuperSecretKey"; // Replace with a strong key
 
         public async Task<LogInQueryResult> Handle(LogInQuery query, CancellationToken cancellationToken)
         {

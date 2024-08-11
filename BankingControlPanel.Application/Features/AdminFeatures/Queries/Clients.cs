@@ -1,16 +1,20 @@
-﻿using BankingControlPanel.Application.Features.AdminFeatures.DTOs;
+﻿using BankingControlPanel.Application.Authentication;
+using BankingControlPanel.Application.Features.AdminFeatures.DTOs;
+using BankingControlPanel.Application.Shared.Cache.Abstraction;
 using BankingControlPanel.Domain.ClientManagement;
 using BankingControlPanel.Infrastructure.DataAccess;
 using BankingControlPanel.Shared.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
+using System.Text.Json;
 
 namespace BankingControlPanel.Application.Features.AdminFeatures.Queries
 {
-    internal class ClientsQueryHandler(BankingControlPanelDbContext _db) : IQueryHandler<ClientsQuery, ClientsQueryResult>
+    internal class ClientsQueryHandler(BankingControlPanelDbContext _db, ISearchSuggestionCacheService _cacheService, ApplicationContext _context) : IQueryHandler<ClientsQuery, ClientsQueryResult>
     {
         public async Task<ClientsQueryResult> Handle(ClientsQuery query, CancellationToken cancellationToken)
         {
-            var clients = _db.Set<Client>().AsQueryable(); // For read side we can create read model, fields specialized for high read throughput
+            var clients = _db.Set<Client>().AsQueryable(); // For read side we can create read model,with denormalized fields for high read throughput
 
             if (!string.IsNullOrEmpty(query.Address))
             {
@@ -42,7 +46,11 @@ namespace BankingControlPanel.Application.Features.AdminFeatures.Queries
 
             var peopleToReturn = await clients.Skip((query.PageNumber ?? 0) * (query.PageSize ?? 10)) // For high performance here we could use cursor pagination
                                               .Take(query.PageSize ?? 10)
+                                              .AsNoTracking()
+                                              .OrderBy(query.OrderBy ?? "CreatedAt", "asc")
                                               .ToListAsync(cancellationToken);
+
+            _cacheService.CacheParameters(_context.Username, JsonSerializer.Serialize(query));
 
             return new ClientsQueryResult(peopleToReturn.Select(x => new ClientDto(x.Email,
                                                                 x.FirstName,
@@ -69,6 +77,7 @@ namespace BankingControlPanel.Application.Features.AdminFeatures.Queries
         string? Address,
         string? PersonalId,
         int? PageNumber,
-        int? PageSize) : IQuery<ClientsQueryResult>;
+        int? PageSize,
+        string? OrderBy) : IQuery<ClientsQueryResult>;
     public record ClientsQueryResult(IEnumerable<ClientDto> Clients);
 }
