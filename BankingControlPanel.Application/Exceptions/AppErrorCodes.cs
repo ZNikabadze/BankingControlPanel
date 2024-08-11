@@ -6,10 +6,13 @@
         UserAlreadyExists,
         UserDoesNotExist,
         InvalidCredentials,
+        InvalidEmail,
         InvalidGender,
+        InvalidRole,
         InvalidFirstName,
         InvalidLastName,
         InvalidPersonalId,
+        InvalidMobileNumber,
         ClientAlreadyExist
     }
 }

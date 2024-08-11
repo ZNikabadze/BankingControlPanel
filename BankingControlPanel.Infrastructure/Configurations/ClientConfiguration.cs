@@ -22,7 +22,7 @@ namespace BankingControlPanel.Infrastructure.Configurations
             builder.Property(x => x.PersonalId).IsRequired().HasMaxLength(11);
             builder.Property(x => x.Address).HasJsonConversion();
 
-            builder.HasMany(x => x.Accounts);
+            builder.HasMany(x => x.Accounts).WithOne(x => x.Client);
         }
     }
 }

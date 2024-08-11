@@ -2,7 +2,7 @@
 using BankingControlPanel.Application.Features.AdminFeatures.DTOs;
 using BankingControlPanel.Domain.ClientManagement;
 using BankingControlPanel.Domain.ClientManagement.Respository;
-using BankingControlPanel.Domain.ClientManagement.Validations;
+using BankingControlPanel.Shared.Helpers;
 using BankingControlPanel.Shared.Infrastructure;
 using FluentValidation;
 
@@ -52,10 +52,12 @@ namespace BankingControlPanel.Application.Features.AdminFeatures.Commands
     {
         public AddClientCommandValidator()
         {
-            RuleFor(x => x.FirstName).NotEmpty().MinimumLength(2).MaximumLength(50).Matches(RegexConstants.NamesRegex).WithErrorCode(AppErrorCodes.InvalidFirstName.ToString());
-            RuleFor(x => x.LastName).NotEmpty().MinimumLength(2).MaximumLength(50).Matches(RegexConstants.NamesRegex).WithErrorCode(AppErrorCodes.InvalidLastName.ToString());
+            RuleFor(x => x.Email).Matches(x => Validations.EmailRegex).WithErrorCode(AppErrorCodes.InvalidEmail.ToString());
+            RuleFor(x => x.FirstName).NotEmpty().MinimumLength(2).MaximumLength(50).Matches(Validations.NamesRegex).WithErrorCode(AppErrorCodes.InvalidFirstName.ToString());
+            RuleFor(x => x.LastName).NotEmpty().MinimumLength(2).MaximumLength(50).Matches(Validations.NamesRegex).WithErrorCode(AppErrorCodes.InvalidLastName.ToString());
             RuleFor(x => x.Sex).NotEqual(Sex.None).WithErrorCode(AppErrorCodes.InvalidGender.ToString());
-            RuleFor(x => x.PersonalId).NotEmpty().Length(11).Matches(RegexConstants.DigitsRegex).WithErrorCode(AppErrorCodes.InvalidPersonalId.ToString());
+            RuleFor(x => x.PersonalId).NotEmpty().Length(11).Matches(Validations.DigitsRegex).WithErrorCode(AppErrorCodes.InvalidPersonalId.ToString());
+            RuleFor(x => x.MobileNumber).NotEmpty().Must(Validations.IsValidMobileNumber).WithErrorCode(AppErrorCodes.InvalidMobileNumber.ToString());
         }
     }
 }

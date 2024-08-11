@@ -8,7 +8,7 @@
         InvalidLastName,
         InvalidGender,
         InvalidPersonId,
-        InvalidPhoneNumber,
+        InvalidMobileNumber,
         InvalidCityName,
         InvalidRole,
         InvalidAccountCount
