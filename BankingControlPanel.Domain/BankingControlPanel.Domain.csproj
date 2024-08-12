@@ -10,8 +10,4 @@
     <ProjectReference Include="..\BankingControlPanel.Shared\BankingControlPanel.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ClientManagement\Events\" />
-  </ItemGroup>
-
 </Project>

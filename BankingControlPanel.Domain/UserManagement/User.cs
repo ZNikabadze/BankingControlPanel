@@ -16,7 +16,7 @@ namespace BankingControlPanel.Domain.UserManagement
 
             ValidateUser();
 
-            Raise(new UserCreatedEvent());
+            Raise(new UserCreatedEvent()); // We can use event to create read models or handle for business process purposes
         }
 
         public string Username { get; private set; }

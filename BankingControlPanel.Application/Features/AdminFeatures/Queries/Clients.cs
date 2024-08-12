@@ -37,7 +37,7 @@ namespace BankingControlPanel.Application.Features.AdminFeatures.Queries
 
             if (query.Sex is not null)
                 clients = clients.Where(x => x.Sex == query.Sex);
-
+             
             if (!string.IsNullOrEmpty(query.PersonalId))
                 clients = clients.Where(x => x.PersonalId.Contains(query.PersonalId));
 
