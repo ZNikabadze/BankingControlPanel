@@ -1,4 +1,5 @@
-﻿using BankingControlPanel.Domain.ClientManagement.ValueObjects;
+﻿using BankingControlPanel.Domain.ClientManagement.Events;
+using BankingControlPanel.Domain.ClientManagement.ValueObjects;
 using BankingControlPanel.Domain.Exceptions;
 using BankingControlPanel.Shared.Helpers;
 using BankingControlPanel.Shared.Infrastructure.Models;
@@ -31,6 +32,8 @@ namespace BankingControlPanel.Domain.ClientManagement
             Accounts.Add(account);
 
             ValidateClient();
+
+            Raise(new ClientCreatedEvent()); // We can use event to create read models or handle for business process purposes
         }
 
         public string Email { get; private set; }
@@ -41,7 +44,7 @@ namespace BankingControlPanel.Domain.ClientManagement
         public string MobileNumber { get; private set; }
         public Sex Sex { get; private set; }
         public Address Address { get; private set; }
-        public virtual ICollection<Account> Accounts { get; private set; } = new List<Account>();
+        public virtual ICollection<Account> Accounts { get; private set; } = new HashSet<Account>();
 
         public static Client Create(string email,
             string firstName,
